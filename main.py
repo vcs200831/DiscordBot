@@ -1,9 +1,12 @@
+from dotenv import load_dotenv
+import os
 import discord
 import random
 
-TOKEN = 'OTk0Nzk5OTc4NDIzNzkxNjc2.GhQ0Pb.OlGfGJs1fjKanRIaoRDZX-goYKKRLN9PFVunQ0'
-
 client = discord.Client()
+
+# Credentials
+load_dotenv('.env')
 
 
 @client.event
@@ -35,5 +38,4 @@ async def on_message(message):
     if user_message.lower() == '!anywhere':
         await message.channel.send('This can be used anywhere!')
         return
-
-client.run(TOKEN)
+client.run(os.getenv('BOT_TOKEN'))
